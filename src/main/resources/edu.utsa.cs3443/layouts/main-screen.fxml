@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.MainScreenController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" text="Want to Watch">
+            <ToggleButton mnemonicParsing="false" onAction="#showWantToWatch" prefHeight="60.0" prefWidth="300.0" text="Want to Watch">
                <toggleGroup>
                   <ToggleGroup fx:id="menuTabGroup" />
                </toggleGroup>
+               <font>
+                  <Font size="24.0" />
+               </font>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" text="Watched" toggleGroup="$menuTabGroup" />
-            <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" text="Sceneit" toggleGroup="$menuTabGroup" />
+            <ToggleButton mnemonicParsing="false" onAction="#showWatched" prefHeight="60.0" prefWidth="300.0" selected="true" text="Watched" toggleGroup="$menuTabGroup">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" onAction="#showSceneIts" prefHeight="60.0" prefWidth="300.0" text="Sceneit" toggleGroup="$menuTabGroup">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </ToggleButton>
          </children>
       </HBox>
    </top>
+   <center>
+      <ListView fx:id="mediaListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
