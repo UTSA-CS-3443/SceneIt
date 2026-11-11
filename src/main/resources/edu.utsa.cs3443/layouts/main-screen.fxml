@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" text="Want to Watch">
+               <toggleGroup>
+                  <ToggleGroup fx:id="menuTabGroup" />
+               </toggleGroup>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" text="Watched" toggleGroup="$menuTabGroup" />
+            <ToggleButton mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" text="Sceneit" toggleGroup="$menuTabGroup" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
