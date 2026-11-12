@@ -2,7 +2,6 @@ package edu.utsa.cs3443.sceneit.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.FXMLLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -13,10 +12,10 @@ import java.io.IOException;
 public class WelcomeScreenController {
 
     @FXML
-    private void handleContinueButton{
+    private void handleContinueButton(ActionEvent event){
         try{
             //load the Main_Screen.fxml file from resource folder
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScreenPath"))
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("edu.utsa.cs3443/layouts/main-screen.fxml"));
             Parent root = loader.load();
 
             //get the current stage (window) from the button click event

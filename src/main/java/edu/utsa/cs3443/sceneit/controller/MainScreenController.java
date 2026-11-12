@@ -3,8 +3,15 @@ import edu.utsa.cs3443.sceneit.model.Manager;
 import edu.utsa.cs3443.sceneit.model.WatchStatus;
 import edu.utsa.cs3443.sceneit.model.Media;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ListCell;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+
+import java.io.IOException;
 
 public class MainScreenController {
     private Manager manager;
@@ -27,6 +34,24 @@ public class MainScreenController {
     @FXML
     private void showSceneIts() {
         mediaListView.getItems().setAll(manager.getSceneIts());
+    }
+
+    @FXML
+    private void handleAddEntryButton(ActionEvent event){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("add-editEntry.fxml path"));
+            Parent root = loader.load();
+
+            // pass active manager instance to new controller
+            AddEditEntryController controller = loader.getController();
+            controller.setManager(manager);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
