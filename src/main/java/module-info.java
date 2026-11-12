@@ -5,5 +5,7 @@ module edu.utsa.cs3443.sceneit {
 
 
     opens edu.utsa.cs3443.sceneit to javafx.fxml;
+    opens edu.utsa.cs3443.sceneit.controller to javafx.fxml;
     exports edu.utsa.cs3443.sceneit;
+
 }
