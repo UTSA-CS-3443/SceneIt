@@ -1,37 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.MainScreenController">
    <top>
-      <HBox prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <ToggleButton mnemonicParsing="false" onAction="#showWantToWatch" prefHeight="60.0" prefWidth="300.0" text="Want to Watch">
-               <toggleGroup>
-                  <ToggleGroup fx:id="menuTabGroup" />
-               </toggleGroup>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#showWatched" prefHeight="60.0" prefWidth="300.0" selected="true" text="Watched" toggleGroup="$menuTabGroup">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </ToggleButton>
-            <ToggleButton mnemonicParsing="false" onAction="#showSceneIts" prefHeight="60.0" prefWidth="300.0" text="Sceneit" toggleGroup="$menuTabGroup">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </ToggleButton>
+            <BorderPane prefHeight="48.0" prefWidth="200.0">
+               <left>
+                  <Label text="SceneIt" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Century Gothic" size="24.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets left="25.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <right>
+                  <Button mnemonicParsing="false" text="New entry" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Verdana" size="18.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets right="15.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </right>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </BorderPane>
+            <HBox prefWidth="200.0">
+               <children>
+                  <ToggleButton mnemonicParsing="false" onAction="#showWantToWatch" prefHeight="60.0" prefWidth="300.0" text="Want to Watch">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="menuTabGroup" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="Verdana Bold" size="24.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#showWatched" prefHeight="60.0" prefWidth="300.0" selected="true" text="Watched" toggleGroup="$menuTabGroup">
+                     <font>
+                        <Font name="Verdana Bold" size="24.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" onAction="#showSceneIts" prefHeight="60.0" prefWidth="300.0" text="Sceneit" toggleGroup="$menuTabGroup">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </top>
    <center>
       <ListView fx:id="mediaListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
