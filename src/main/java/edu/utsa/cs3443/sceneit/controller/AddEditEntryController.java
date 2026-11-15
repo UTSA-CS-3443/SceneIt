@@ -5,6 +5,7 @@ import edu.utsa.cs3443.sceneit.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class AddEditEntryController {
     @FXML private TextField genreTextField;
     //@FXML private TextField directorField;
     @FXML private TextArea sceneTextArea;
+    @FXML private VBox sceneItTextAreaBox;
     @FXML private DatePicker datePicker;
 
     //State Variable to track if we are Editing an existing item
@@ -90,11 +92,17 @@ public class AddEditEntryController {
         updateSceneAccess();
     }
 
+    /**
+     * Controls whether the SceneIt section is visible and interactive
+     * depending on whether the media has been watched.
+     */
     private void updateSceneAccess() {
         String status = statusComboBox.getValue();
         boolean isWatched = "Watched".equals(status);
 
-        sceneTextArea.setDisable(!isWatched);
+        sceneItTextAreaBox.setVisible(isWatched);
+        sceneItTextAreaBox.setManaged(isWatched); // This collapses the layout space when hidden
+
         if (!isWatched) {
             sceneTextArea.clear();
         }
