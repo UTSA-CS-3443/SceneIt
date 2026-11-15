@@ -2,11 +2,13 @@ package edu.utsa.cs3443.sceneit.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 // Parent abstract class used as a blueprint for Movie & TvShow classes
 public abstract class Media {
     // The ID stays unchanged so a saved scene continues to reference its owner
     private final int id;
+    private LocalDate date;
     private String title;
     private int releaseYear;
     private List<String> genres;
@@ -16,7 +18,7 @@ public abstract class Media {
     private FavoriteScene favoriteScene; // null means no SceneIt; otherwise one Sceneit per entry
 
     /** Creates a valid entry: Watched requires a rating; Want to Watch requires null. */
-    protected Media(int id, String title, int releaseYear, List<String> genres,
+    protected Media(int id, LocalDate date, String title, int releaseYear, List<String> genres,
                     WatchStatus watchStatus, Double rating, String notes) {
 
         if (id <= 0) {
@@ -27,6 +29,7 @@ public abstract class Media {
         }
 
         this.id = id;
+        setDate(date);
         setTitle(title);
         setReleaseYear(releaseYear);
         setGenres(genres);
@@ -52,6 +55,10 @@ public abstract class Media {
 
     public int getId() {
         return id;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     public String getTitle() {
@@ -90,6 +97,13 @@ public abstract class Media {
             throw new IllegalArgumentException("Title cannot be blank.");
         }
         this.title = title.trim();
+    }
+
+    public void setDate(LocalDate date) {
+        if (date == null) {
+            throw new IllegalArgumentException("Date cannot be null.");
+        }
+        this.date = date;
     }
 
     public void setReleaseYear(int releaseYear) {

@@ -50,6 +50,16 @@ public class AddEditEntryController {
         this.manager = manager;
     }
 
+    public void setCurrentStatus(WatchStatus status) {
+        if (status == WatchStatus.WATCHED) {
+            statusComboBox.setValue("Watched");
+        } else {
+            statusComboBox.setValue("Want to Watch");
+        }
+
+        updateSceneAccess();
+    }
+
     /**
      * Called when opening the form.
      * Pass null for Add Mode, or an existing Media object for Edit Mode.
@@ -66,6 +76,7 @@ public class AddEditEntryController {
 
             //prefill fields with existing data
             titleField.setText(media.getTitle());
+            datePicker.setValue(media.getDate());
             typeComboBox.setValue(media.getType());
             yearField.setText(String.valueOf(media.getReleaseYear()));
 
@@ -90,6 +101,14 @@ public class AddEditEntryController {
     @FXML
     private void handleStatusChange(ActionEvent event) {
         updateSceneAccess();
+
+        // Resizes the window to make it bigger if going from "Want to Watch" to "Watched"
+        if (statusComboBox.getScene() != null
+            && statusComboBox.getScene().getWindow() != null) {
+
+            Stage stage = (Stage) statusComboBox.getScene().getWindow();
+            stage.sizeToScene();
+        }
     }
 
     /**
@@ -102,15 +121,18 @@ public class AddEditEntryController {
 
         sceneItTextAreaBox.setVisible(isWatched);
         sceneItTextAreaBox.setManaged(isWatched); // This collapses the layout space when hidden
-
+        sceneTextArea.setDisable(!isWatched); // Makes Sceneit text box disabled if entry is not watched
+        ratingField.setDisable(!isWatched);  // Disable rating field if entry is not "Watched"
         if (!isWatched) {
             sceneTextArea.clear();
+            ratingField.clear();
         }
     }
 
     @FXML
     private void handleSave(ActionEvent event) {
         String title = titleField.getText().trim();
+        LocalDate date = datePicker.getValue();
         String type = typeComboBox.getValue();
         String statusString = statusComboBox.getValue();
         String yearText = yearField.getText().trim();
@@ -122,6 +144,12 @@ public class AddEditEntryController {
         //validate title
         if (title.isEmpty()) {
             showError("Missing Title", "Please enter a title for the media.");
+            return;
+        }
+
+        // validate date
+        if (date == null) {
+            showError("Missing Date", "Please enter a date.");
             return;
         }
 
@@ -183,9 +211,9 @@ public class AddEditEntryController {
                 Media newMedia;
 
                 if ("Movie".equals(type)) {
-                    newMedia = new Movie(generatedId, title, year, genres, watchStatus, rating, "");
+                    newMedia = new Movie(generatedId, date, title, year, genres, watchStatus, rating, "");
                 } else {
-                    newMedia = new TvShow(generatedId, title, year, genres, watchStatus, rating, "");
+                    newMedia = new TvShow(generatedId, date, title, year, genres, watchStatus, rating, "");
                 }
 
                 if (watchStatus == WatchStatus.WATCHED && !sceneText.isEmpty()) {
@@ -198,6 +226,7 @@ public class AddEditEntryController {
             } else {
                 // edit mode
                 currentMedia.setTitle(title);
+                currentMedia.setDate(date);
                 currentMedia.setReleaseYear(year);
                 currentMedia.setGenres(genres);
 

@@ -10,17 +10,16 @@ import javafx.scene.control.ListCell;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.Node;
 import edu.utsa.cs3443.sceneit.model.CsvStorage;
 import javafx.stage.Modality;
 import java.nio.file.Path;
 
-import java.io.IOException;
-
 public class MainScreenController {
+
     private Manager manager;
     @FXML
     private ListView<Media> mediaListView;
+    private WatchStatus currentWatchStatus = WatchStatus.WATCHED;
 
     public void setManager(Manager manager) {
         this.manager = manager;
@@ -29,14 +28,17 @@ public class MainScreenController {
 
     @FXML
     private void showWatched() {
+        currentWatchStatus = WatchStatus.WATCHED;
         mediaListView.getItems().setAll(manager.getByStatus(WatchStatus.WATCHED));
     }
     @FXML
     private void showWantToWatch() {
+        currentWatchStatus = WatchStatus.WANT_TO_WATCH;
         mediaListView.getItems().setAll(manager.getByStatus(WatchStatus.WANT_TO_WATCH));
     }
     @FXML
     private void showSceneIts() {
+        currentWatchStatus = WatchStatus.SCENEIT;
         mediaListView.getItems().setAll(manager.getSceneIts());
     }
 
@@ -51,6 +53,7 @@ public class MainScreenController {
             AddEditEntryController controller = loader.getController();
             controller.setManager(this.manager);
             controller.setMedia(null);
+            controller.setCurrentStatus(currentWatchStatus);
 
             //open the popup window
             Stage stage = new Stage();
@@ -63,8 +66,14 @@ public class MainScreenController {
             CsvStorage storage = new CsvStorage(Path.of("data"));
             storage.save(this.manager);
 
-            //refresh your main screen UI list (re-load the watched items or keep current view)
-            showWatched();
+            //refresh your main screen UI list (based on whichever view you were currently on)
+            if (currentWatchStatus == WatchStatus.WATCHED) {
+                showWatched();
+            } else if (currentWatchStatus == WatchStatus.WANT_TO_WATCH) {
+                showWantToWatch();
+            } else {
+                showSceneIts();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

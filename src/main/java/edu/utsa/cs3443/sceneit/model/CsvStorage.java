@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.time.LocalDate;
 
 /**
  * Loads and saves the local CSV files without handling console input or output.
@@ -48,6 +49,7 @@ public class CsvStorage {
         ) {
             for (CSVRecord record : parser) {
                 int id = Integer.parseInt(record.get("id"));
+                LocalDate date = LocalDate.parse(record.get("date").trim());
                 String type = record.get("type");
                 String title = record.get("title");
                 int releaseYear = Integer.parseInt(record.get("releaseYear"));
@@ -69,11 +71,11 @@ public class CsvStorage {
                 Media media;
                 if (type.equals("MOVIE")) {
                     media = new Movie(
-                            id, title, releaseYear, genres, watchStatus, rating, notes
+                            id, date, title, releaseYear, genres, watchStatus, rating, notes
                     );
                 } else if (type.equals("TV_SHOW")) {
                     media = new TvShow(
-                            id, title, releaseYear, genres, watchStatus, rating, notes
+                            id, date, title, releaseYear, genres, watchStatus, rating, notes
                     );
                 } else {
                     throw new IllegalArgumentException("Unknown record type: " + type);
@@ -121,7 +123,7 @@ public class CsvStorage {
     public void save(Manager manager) throws IOException {
         // Set the format for the media.csv file
         CSVFormat format = CSVFormat.DEFAULT.builder()
-                .setHeader("id", "type", "title", "releaseYear",
+                .setHeader("id", "date", "type", "title", "releaseYear",
                         "genres", "watchStatus", "rating", "notes")
                 .get();
 
@@ -133,6 +135,7 @@ public class CsvStorage {
                 // Field order matches the header
                 printer.printRecord(
                         media.getId(),
+                        media.getDate(),
                         media.getType(),
                         media.getTitle(),
                         media.getReleaseYear(),

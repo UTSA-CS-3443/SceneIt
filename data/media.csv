@@ -1,14 +1,14 @@
-id,type,title,releaseYear,genres,watchStatus,rating,notes
-2,TV_SHOW,Harbor Lights Season 1,2023,Drama|Mystery,WANT_TO_WATCH,,Try the first episode this weekend.
-3,MOVIE,"Coffee, Rain and Other Plans",2022,Comedy|Romance,WANT_TO_WATCH,,
-4,TV_SHOW,Orbit Academy Season 2,2025,Animation|Sci-fi,WANT_TO_WATCH,,Watch after finishing season one.
-5,MOVIE,Quiet Signals,2021,Thriller|Mystery,WANT_TO_WATCH,,"The trailer looked interesting, especially the setting."
-6,TV_SHOW,The Garden Club Season 1,2024,Comedy|Drama,WANT_TO_WATCH,,
-7,MOVIE,Paper Satellites,2020,Drama|Sci-fi,WATCHED,4.5,"Loved the characters, but the middle felt slow."
-8,TV_SHOW,Midnight Platform Season 1,2022,Mystery|Drama,WATCHED,3.5,Strong opening and an uneven ending.
-9,MOVIE,"The ""Almost"" Perfect Heist",2023,Comedy|Crime,WATCHED,4.0,"Funny, clever and easy to rewatch."
-10,TV_SHOW,Riverstone Season 3,2024,Adventure|Fantasy,WATCHED,5.0,
-11,MOVIE,Sunday at the Arcade,2019,Comedy|Family,WATCHED,2.5,Good soundtrack; the story did not work for me.
-12,MOVIE,Star Wars Episode X: The Rise of Skywalker,2019,Action|Sci-Fi,WATCHED,1.0,Horrible. Absolutely horrible.
-13,TV_SHOW,Stranger Things Season 3,2019,Sci-Fi|Action,WATCHED,5.0,Loved it!
-14,MOVIE,Good Boys,2019,Comedy,WANT_TO_WATCH,,"This is a test description, haha"
+id,date,type,title,releaseYear,genres,watchStatus,rating,notes
+2,2026-01-01,TV_SHOW,Harbor Lights Season 1,2023,Drama|Mystery,WANT_TO_WATCH,,Try the first episode this weekend.
+3,2026-01-27,MOVIE,"Coffee, Rain and Other Plans",2022,Comedy|Romance,WANT_TO_WATCH,,
+4,2026-02-23,TV_SHOW,Orbit Academy Season 2,2025,Animation|Sci-fi,WANT_TO_WATCH,,Watch after finishing season one.
+5,2026-03-21,MOVIE,Quiet Signals,2021,Thriller|Mystery,WANT_TO_WATCH,,"The trailer looked interesting, especially the setting."
+6,2026-04-17,TV_SHOW,The Garden Club Season 1,2024,Comedy|Drama,WANT_TO_WATCH,,
+7,2026-05-13,MOVIE,Paper Satellites,2020,Drama|Sci-fi,WATCHED,4.5,"Loved the characters, but the middle felt slow."
+8,2026-06-09,TV_SHOW,Midnight Platform Season 1,2022,Mystery|Drama,WATCHED,3.5,Strong opening and an uneven ending.
+9,2026-07-05,MOVIE,"The ""Almost"" Perfect Heist",2023,Comedy|Crime,WATCHED,4.0,"Funny, clever and easy to rewatch."
+10,2026-08-01,TV_SHOW,Riverstone Season 3,2024,Adventure|Fantasy,WATCHED,5.0,
+11,2026-08-27,MOVIE,Sunday at the Arcade,2019,Comedy|Family,WATCHED,2.5,Good soundtrack; the story did not work for me.
+12,2026-09-23,MOVIE,Star Wars Episode X: The Rise of Skywalker,2019,Action|Sci-Fi,WATCHED,1.0,Horrible. Absolutely horrible.
+13,2026-10-19,TV_SHOW,Stranger Things Season 3,2019,Sci-Fi|Action,WATCHED,5.0,Loved it!
+14,2026-11-15,MOVIE,Good Boys,2019,Comedy,WANT_TO_WATCH,,"This is a test description, haha"
