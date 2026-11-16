@@ -9,9 +9,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.WelcomeScreenController">
    <children>
-      <Label layoutX="133.0" layoutY="42.0" text="Welcome To SceneIt ">
+      <Label layoutX="129.0" layoutY="42.0" text="Welcome To SceneIt ">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
       <Button layoutX="212.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleContinueButton" text="Click Here To Continue" />

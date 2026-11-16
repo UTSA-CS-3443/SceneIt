@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import edu.utsa.cs3443.sceneit.controller.MainScreenController;
+import edu.utsa.cs3443.sceneit.controller.WelcomeScreenController;
 import edu.utsa.cs3443.sceneit.model.CsvStorage;
 import edu.utsa.cs3443.sceneit.model.Manager;
 import java.nio.file.Path;
@@ -18,10 +18,10 @@ public class SceneitApplication extends Application {
         Manager manager = storage.load();
 
         // Create the FXMLLoader and set it to the welcome screen, create the scene
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneitApplication.class.getResource("/edu.utsa.cs3443/layouts/main-screen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneitApplication.class.getResource("/edu.utsa.cs3443/layouts/Welcome_Screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         // Get the main screen controller and set the manager to the one we made
-        MainScreenController controller = fxmlLoader.getController();
+        WelcomeScreenController controller = fxmlLoader.getController();
         controller.setManager(manager);
 
         // Launch the app

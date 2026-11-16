@@ -12,6 +12,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Arrays;
 
+/**
+ * Controller for the Add/Edit Entry screen in the Sceneit application.
+ * <p>
+ * Manages user input, field validation, UI state toggling, and data persistence
+ * when creating a new {@link Media} entry or modifying an existing one.
+ * </p>
+ */
 public class AddEditEntryController {
 
     @FXML private Label formTitleLabel;
@@ -31,6 +38,14 @@ public class AddEditEntryController {
     private Media currentMedia;
     private Manager manager;
 
+    /**
+     * Initializes the controller class after its root element has been completely processed.
+     * <p>
+     * Populates the media type and watch status combo boxes, sets default form values
+     * for a new entry ("Movie", "Want to Watch", and the current date), and disables the
+     * favorite scene text area by default.
+     * </p>
+     */
     @FXML
     public void initialize(){
         //populate combo box
@@ -46,11 +61,21 @@ public class AddEditEntryController {
         sceneTextArea.setDisable(true);
     }
 
-
+    /**
+     * Sets the {@link Manager} instance used to add or update media entries.
+     *
+     * @param manager the data manager handling the media collection
+     */
     public void setManager(Manager manager) {
         this.manager = manager;
     }
 
+    /**
+     * Pre-selects the watch status combo box based on the active tab when adding a new entry
+     * and updates access to the rating and SceneIt fields accordingly.
+     *
+     * @param status the {@link WatchStatus} to pre-select in the form
+     */
     public void setCurrentStatus(WatchStatus status) {
         if (status == WatchStatus.WATCHED) {
             statusComboBox.setValue("Watched");
@@ -62,8 +87,14 @@ public class AddEditEntryController {
     }
 
     /**
-     * Called when opening the form.
-     * Pass null for Add Mode, or an existing Media object for Edit Mode.
+     * Configures the form for either Add Mode or Edit Mode.
+     * <p>
+     * Passing {@code null} sets the form header to "Add Entry" with blank fields.
+     * Passing an existing {@link Media} object sets the form header to "Edit Entry"
+     * and pre-fills all form fields with that media's existing data.
+     * </p>
+     *
+     * @param media the {@link Media} object to edit, or {@code null} to create a new entry
      */
     public void setMedia(Media media){
         this.currentMedia = media;
@@ -106,6 +137,15 @@ public class AddEditEntryController {
         }
     }
 
+    /**
+     * Handles changes to the watch status combo box selection.
+     * <p>
+     * Updates visibility and interactivity of the rating and SceneIt sections,
+     * then resizes the modal window to fit the updated layout.
+     * </p>
+     *
+     * @param event the action event triggered by changing the status selection
+     */
     @FXML
     private void handleStatusChange(ActionEvent event) {
         updateSceneAccess();
@@ -120,8 +160,12 @@ public class AddEditEntryController {
     }
 
     /**
-     * Controls whether the SceneIt section is visible and interactive
-     * depending on whether the media has been watched.
+     * Controls whether the SceneIt section and rating field are visible and interactive
+     * based on whether the selected watch status is "Watched".
+     * <p>
+     * If the status is not "Watched", the SceneIt box is hidden and collapsed from layout,
+     * and both the SceneIt text area and rating field are cleared and disabled.
+     * </p>
      */
     private void updateSceneAccess() {
         String status = statusComboBox.getValue();
@@ -137,6 +181,17 @@ public class AddEditEntryController {
         }
     }
 
+    /**
+     * Validates all form inputs and saves the media entry to the {@link Manager}.
+     * <p>
+     * Performs validation on title, date, release year, genres, rating range (1.0–5.0),
+     * and status-specific rating rules. If valid, either creates a new {@link Movie} or
+     * {@link TvShow} in Add Mode, or replaces the existing entry in Edit Mode, attaches a
+     * {@link FavoriteScene} if applicable, and closes the window.
+     * </p>
+     *
+     * @param event the action event triggered by clicking the Save button
+     */
     @FXML
     private void handleSave(ActionEvent event) {
         // Get all the fields from the form
@@ -264,16 +319,30 @@ public class AddEditEntryController {
         closeWindow();
     }
 
+    /**
+     * Handles the Cancel button action by closing the form without saving changes.
+     *
+     * @param event the action event triggered by clicking the Cancel button
+     */
     @FXML
     private void handleCancel(ActionEvent event) {
         closeWindow();
     }
 
+    /**
+     * Retrieves the current window stage from the title field and closes it.
+     */
     private void closeWindow() {
         Stage stage = (Stage) titleField.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Displays a modal error dialog with the specified title and message.
+     *
+     * @param title   the title text of the alert dialog window
+     * @param message the error description displayed in the dialog body
+     */
     private void showError(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);

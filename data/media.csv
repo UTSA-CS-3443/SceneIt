@@ -1,5 +1,5 @@
 id,date,type,title,releaseYear,genres,watchStatus,rating,notes
-2,2026-01-01,TV_SHOW,Harbor Lights Season 1,2023,Drama|Mystery,WANT_TO_WATCH,,Try the first episode this weekend.
+2,2026-01-01,TV_SHOW,Harbor Lights Season 1,2023,Drama|Mystery,WANT_TO_WATCH,,Try the first episode this weekend. Maybe next weekend
 3,2026-01-27,MOVIE,"Coffee, Rain and Other Plans",2022,Comedy|Romance,WANT_TO_WATCH,,
 4,2026-02-23,TV_SHOW,Orbit Academy Season 2,2025,Animation|Sci-fi,WANT_TO_WATCH,,Watch after finishing season one.
 5,2026-03-21,MOVIE,Quiet Signals,2021,Thriller|Mystery,WANT_TO_WATCH,,"The trailer looked interesting, especially the setting."
@@ -11,3 +11,4 @@ id,date,type,title,releaseYear,genres,watchStatus,rating,notes
 12,2026-09-23,MOVIE,Star Wars Episode X: The Rise of Skywalker,2019,Action|Sci-Fi,WATCHED,1.5,Horrible. Absolutely horrible.
 13,2026-10-19,TV_SHOW,Stranger Things Season 3,2019,Sci-Fi|Action,WATCHED,5.0,Loved it!
 14,2026-11-15,MOVIE,Good Boys,2019,Comedy,WANT_TO_WATCH,,"This is a test description, haha"
+15,2026-11-16,MOVIE,Hunger Games,2010,Fantasy,WATCHED,4.5,Need to rewatch with partner
