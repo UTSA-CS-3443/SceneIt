@@ -31,6 +31,7 @@ public class AddEditEntryController {
     //@FXML private TextField directorField;
     @FXML private TextArea sceneTextArea;
     @FXML private VBox sceneItTextAreaBox;
+    @FXML private VBox ratingBox;
     @FXML private DatePicker datePicker;
     @FXML private TextArea notesTextArea;
 
@@ -59,6 +60,13 @@ public class AddEditEntryController {
 
         //default sceneIt area to disabled since default is want to watch
         sceneTextArea.setDisable(true);
+        sceneItTextAreaBox.setVisible(false);
+        sceneItTextAreaBox.setManaged(false);
+
+        //hide and collapse both rating and sceneIt sections by default want to watch
+        ratingBox.setVisible(false);
+        ratingBox.setManaged(false);
+        ratingField.setDisable(true);
     }
 
     /**
@@ -171,10 +179,17 @@ public class AddEditEntryController {
         String status = statusComboBox.getValue();
         boolean isWatched = "Watched".equals(status);
 
+        //toggle SceneIt section visbility
         sceneItTextAreaBox.setVisible(isWatched);
         sceneItTextAreaBox.setManaged(isWatched); // This collapses the layout space when hidden
         sceneTextArea.setDisable(!isWatched); // Makes Sceneit text box disabled if entry is not watched
+
+        //toggle rating section visibility
+        ratingBox.setVisible(isWatched);
+        ratingBox.setManaged(isWatched);
         ratingField.setDisable(!isWatched);  // Disable rating field if entry is not "Watched"
+
+        //clear bot inputs if user switches back to want to watch
         if (!isWatched) {
             sceneTextArea.clear();
             ratingField.clear();

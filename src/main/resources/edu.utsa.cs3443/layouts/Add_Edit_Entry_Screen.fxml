@@ -77,14 +77,18 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox fx:id="ratingBox">
                      <children>
-                        <Label text="Rating" />
-                        <TextField fx:id="ratingField" prefHeight="25.0" prefWidth="100.0">
-                           <VBox.margin>
-                              <Insets right="10.0" />
-                           </VBox.margin>
-                        </TextField>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Rating" />
+                              <TextField fx:id="ratingField" prefHeight="25.0" prefWidth="100.0">
+                                 <VBox.margin>
+                                    <Insets right="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>
@@ -94,7 +98,7 @@
       <VBox spacing="5.0">
          <children>
             <Label text="Notes" />
-            <TextArea fx:id="notesTextArea" prefRowCount="2" wrapText="true" promptText="Your notes (optional)" />
+            <TextArea fx:id="notesTextArea" prefRowCount="2" promptText="Your notes (optional)" wrapText="true" />
          </children>
       </VBox>
       <VBox fx:id="sceneItTextAreaBox">

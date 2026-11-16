@@ -12,3 +12,4 @@ id,date,type,title,releaseYear,genres,watchStatus,rating,notes
 13,2026-10-19,TV_SHOW,Stranger Things Season 3,2019,Sci-Fi|Action,WATCHED,5.0,Loved it!
 14,2026-11-15,MOVIE,Good Boys,2019,Comedy,WANT_TO_WATCH,,"This is a test description, haha"
 15,2026-11-16,MOVIE,Hunger Games,2010,Fantasy,WATCHED,4.5,Need to rewatch with partner
+16,2026-11-16,MOVIE,DoomsDay,2026,Hero,WANT_TO_WATCH,,super excited to see this!
