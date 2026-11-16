@@ -91,12 +91,18 @@
             </HBox>
          </children>
       </VBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Notes" />
+            <TextArea fx:id="notesTextArea" prefRowCount="2" wrapText="true" promptText="Your notes (optional)" />
+         </children>
+      </VBox>
       <VBox fx:id="sceneItTextAreaBox">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="SceneIt" />
-                  <TextArea fx:id="sceneTextArea" prefHeight="170.0" prefWidth="500.0" promptText="Desrcibe Your Favorite Scene" />
+                  <TextArea fx:id="sceneTextArea" prefHeight="170.0" prefWidth="500.0" promptText="Describe your favorite scene!" />
                </children>
             </VBox>
          </children>

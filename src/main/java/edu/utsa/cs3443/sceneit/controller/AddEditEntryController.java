@@ -25,6 +25,7 @@ public class AddEditEntryController {
     @FXML private TextArea sceneTextArea;
     @FXML private VBox sceneItTextAreaBox;
     @FXML private DatePicker datePicker;
+    @FXML private TextArea notesTextArea;
 
     //State Variable to track if we are Editing an existing item
     private Media currentMedia;
@@ -68,16 +69,23 @@ public class AddEditEntryController {
         this.currentMedia = media;
 
         if(media == null){
-            //add mode
+            // Add mode
             formTitleLabel.setText("Add Entry");
         } else {
-            //edit mode
+            // Edit mode
             formTitleLabel.setText("Edit Entry");
 
-            //prefill fields with existing data
+            // Prefill fields w/ existing data
             titleField.setText(media.getTitle());
+            notesTextArea.setText(media.getNotes());
             datePicker.setValue(media.getDate());
-            typeComboBox.setValue(media.getType());
+
+            if ("MOVIE".equals(media.getType())) {
+                typeComboBox.setValue("Movie");
+            } else {
+                typeComboBox.setValue("TV Show");
+            }
+
             yearField.setText(String.valueOf(media.getReleaseYear()));
 
             // Safe to call getGenres() because media is guaranteed not to be null here
@@ -131,6 +139,7 @@ public class AddEditEntryController {
 
     @FXML
     private void handleSave(ActionEvent event) {
+        // Get all the fields from the form
         String title = titleField.getText().trim();
         LocalDate date = datePicker.getValue();
         String type = typeComboBox.getValue();
@@ -139,21 +148,22 @@ public class AddEditEntryController {
         //String director = directorField.getText().trim();
         String ratingText = ratingField.getText().trim();
         String genreText = genreTextField.getText().trim();
+        String notesText = notesTextArea.getText().trim();
         String sceneText = sceneTextArea.getText().trim();
 
-        //validate title
+        // Validate title
         if (title.isEmpty()) {
             showError("Missing Title", "Please enter a title for the media.");
             return;
         }
 
-        // validate date
+        // Validate date
         if (date == null) {
             showError("Missing Date", "Please enter a date.");
             return;
         }
 
-        //validate release year
+        // Validate release year
         int year;
         try {
             year = Integer.parseInt(yearText);
@@ -165,19 +175,17 @@ public class AddEditEntryController {
             return;
         }
 
-        //validate genre and parse
+        // Validate genre and parse
         if (genreText.isEmpty()) {
             showError("Missing Genre", "Please enter at least one genre (e.g., Action, Drama).");
             return;
         }
         List<String> genres = Arrays.asList(genreText.split("\\s*,\\s*"));
 
-        //map status string to WatchStatus Enum
-        WatchStatus watchStatus = "Watched".equals(statusString)
-                ? WatchStatus.WATCHED
-                : WatchStatus.WANT_TO_WATCH;
+        // Map status to watchStatus
+        WatchStatus watchStatus = "Watched".equals(statusString) ? WatchStatus.WATCHED : WatchStatus.WANT_TO_WATCH;
 
-        //parse and validate rating
+        // Parse and validate rating
         Double rating = null;
         if (!ratingText.isEmpty()) {
             try {
@@ -187,12 +195,12 @@ public class AddEditEntryController {
                     return;
                 }
             } catch (NumberFormatException e) {
-                showError("Invalid Rating", "Please enter a valid decimal number for the rating (e.g., 4.5).");
+                showError("Invalid Rating", "Please enter a valid decimal number for the rating (e.g. 4.5)");
                 return;
             }
         }
 
-        // enforce model rules (Watched requires rating; Want to Watch forbids rating)
+        // Enforce model rules (Watched requires rating; Want to Watch forbids rating)
         if (watchStatus == WatchStatus.WATCHED && rating == null) {
             showError("Rating Required", "Watched media must have a rating between 1.0 and 5.0.");
             return;
@@ -202,44 +210,51 @@ public class AddEditEntryController {
             return;
         }
 
-        //create or update media object
+        // After validating all fields, create or edit the media object
         try {
+            // (Add) mode
             if (currentMedia == null) {
-                //add mode
-                //use managers method to get the next unique ID safely
+                // Use managers method to get the next unique ID safely
                 int generatedId = manager.getNextId();
                 Media newMedia;
 
+                // Create the corresponding object
                 if ("Movie".equals(type)) {
-                    newMedia = new Movie(generatedId, date, title, year, genres, watchStatus, rating, "");
+                    newMedia = new Movie(generatedId, date, title, year, genres, watchStatus, rating, notesText);
                 } else {
-                    newMedia = new TvShow(generatedId, date, title, year, genres, watchStatus, rating, "");
+                    newMedia = new TvShow(generatedId, date, title, year, genres, watchStatus, rating, notesText);
                 }
 
+                // Create Sceneit if they provided text for the description
                 if (watchStatus == WatchStatus.WATCHED && !sceneText.isEmpty()) {
                     newMedia.setFavoriteScene(new FavoriteScene(sceneText));
                 }
 
-                // passes the media to manager list
+                // Add media to manager list
                 manager.addMedia(newMedia);
 
-            } else {
-                // edit mode
-                currentMedia.setTitle(title);
-                currentMedia.setDate(date);
-                currentMedia.setReleaseYear(year);
-                currentMedia.setGenres(genres);
-
-                if (watchStatus == WatchStatus.WATCHED) {
-                    currentMedia.markWatched(rating);
-                    if (!sceneText.isEmpty()) {
-                        currentMedia.setFavoriteScene(new FavoriteScene(sceneText));
-                    } else {
-                        currentMedia.removeFavoriteScene();
-                    }
+            } else { // (Edit) mode
+                Media replacement;
+                // Check which type of media it is and create corresponding object
+                if ("Movie".equals(type)) {
+                    replacement = new Movie(
+                            currentMedia.getId(), date, title, year,
+                            genres, watchStatus, rating, notesText
+                    );
                 } else {
-                    currentMedia.removeFavoriteScene();
+                    replacement = new TvShow(
+                            currentMedia.getId(), date, title, year,
+                            genres, watchStatus, rating, notesText
+                    );
                 }
+
+                // Add a Sceneit if the status is Watched & Sceneit text is NOT empty
+                // (This handles both creating a new Sceneit, or editing an existing Sceneit description)
+                if (watchStatus == WatchStatus.WATCHED && !sceneText.isEmpty()) {
+                    replacement.setFavoriteScene(new FavoriteScene(sceneText));
+                }
+
+                manager.replaceMedia(replacement);
             }
         } catch (IllegalArgumentException | IllegalStateException e) {
             showError("Validation Error", e.getMessage());

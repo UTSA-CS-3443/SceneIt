@@ -46,6 +46,24 @@ public class Manager {
         mediaList.add(media);
     }
 
+    public void replaceMedia(Media replacement) {
+        // Validate replacement
+        if (replacement == null) {
+            throw new IllegalArgumentException("Replacement cannot be null.");
+        }
+
+        // Loop thru manager to get the entry we want to replace, and replace it
+        for (int i = 0; i < mediaList.size(); i++) {
+            Media existing = mediaList.get(i);
+            if (existing.getId() == replacement.getId()) {
+                mediaList.set(i, replacement);
+                return;
+            }
+        }
+
+        throw new IllegalArgumentException("Entry to replace does not exist.");
+    }
+
     /** Removes the stored object */
     public boolean removeMedia(Media media) {
         return mediaList.remove(media);

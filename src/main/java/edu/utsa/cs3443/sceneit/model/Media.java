@@ -154,6 +154,13 @@ public abstract class Media {
         this.watchStatus = WatchStatus.WATCHED;
     }
 
+    // Marks entry as WANT TO WATCH
+    public void markWantToWatch() {
+        this.watchStatus = WatchStatus.WANT_TO_WATCH;
+        this.rating = null;
+        this.favoriteScene = null;
+    }
+
     // One field means each media item can hold at most one favorite scene
     public void setFavoriteScene(FavoriteScene favoriteScene) {
         if (watchStatus != WatchStatus.WATCHED) {
