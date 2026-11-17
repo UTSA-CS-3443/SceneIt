@@ -18,7 +18,7 @@ public class SceneitApplication extends Application {
         Manager manager = storage.load();
 
         // Create the FXMLLoader and set it to the welcome screen, create the scene
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneitApplication.class.getResource("/edu.utsa.cs3443/layouts/Welcome_Screen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneitApplication.class.getResource("/edu.utsa.cs3443/layouts/welcome-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         // Get the main screen controller and set the manager to the one we made
         WelcomeScreenController controller = fxmlLoader.getController();

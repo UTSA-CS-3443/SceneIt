@@ -122,7 +122,7 @@ public class MainScreenController {
     private void openEntryForm(Media media) {
         try {
             // Load FXML file for the add/edit entry layout
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu.utsa.cs3443/layouts/Add_Edit_Entry_Screen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu.utsa.cs3443/layouts/add-edit-entry-screen.fxml"));
             Parent root = loader.load();
 
             // Get controller for FXML layout and manager class
