@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.ViewEntryController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="550.0" styleClass="view-entry" stylesheets="@../styles/view-entry.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.ViewEntryController">
    <children>
-      <Label fx:id="titleLabel" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="504.0" text="Title">
+      <Label fx:id="titleLabel" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="504.0" text="Title" textFill="WHITE">
          <VBox.margin>
             <Insets left="25.0" top="25.0" />
          </VBox.margin>
@@ -24,12 +24,12 @@
             <Insets left="25.0" right="25.0" />
          </VBox.margin>
          <children>
-            <Text boundsType="VISUAL" text="Type:">
+            <Text boundsType="VISUAL" fill="WHITE" text="Type:">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <Label fx:id="mediaTypeLabel" text="Movie">
+            <Label fx:id="mediaTypeLabel" text="Movie" textFill="WHITE">
                <font>
                   <Font name="System" size="22.0" />
                </font>
@@ -41,7 +41,7 @@
             <Insets left="25.0" right="25.0" />
          </VBox.margin>
          <children>
-            <Text boundsType="VISUAL" text="Status:">
+            <Text boundsType="VISUAL" fill="WHITE" text="Status:">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Insets />
                </HBox.margin>
             </Text>
-            <Label fx:id="statusLabel" text="Watched">
+            <Label fx:id="statusLabel" text="Watched" textFill="WHITE">
                <font>
                   <Font name="System" size="22.0" />
                </font>
@@ -61,12 +61,12 @@
             <Insets left="25.0" right="25.0" />
          </VBox.margin>
          <children>
-            <Text boundsType="VISUAL" text="Release Year:">
+            <Text boundsType="VISUAL" fill="WHITE" text="Release Year:">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <Label fx:id="releaseYearLabel" text="2024">
+            <Label fx:id="releaseYearLabel" text="2024" textFill="WHITE">
                <font>
                   <Font name="System" size="22.0" />
                </font>
@@ -78,12 +78,12 @@
             <Insets left="25.0" right="25.0" />
          </VBox.margin>
          <children>
-            <Text boundsType="VISUAL" text="Rating:">
+            <Text boundsType="VISUAL" fill="WHITE" text="Rating:">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <Label fx:id="ratingLabel" text="4.5">
+            <Label fx:id="ratingLabel" text="4.5" textFill="WHITE">
                <font>
                   <Font name="System" size="22.0" />
                </font>
@@ -95,19 +95,19 @@
             <Insets left="25.0" right="25.0" />
          </VBox.margin>
          <children>
-            <Text boundsType="VISUAL" text="Genre:">
+            <Text boundsType="VISUAL" fill="WHITE" text="Genre:">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <Label fx:id="genresLabel" text="Drama, Comedy">
+            <Label fx:id="genresLabel" text="Drama, Comedy" textFill="WHITE">
                <font>
                   <Font name="System" size="22.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Label alignment="TOP_LEFT" prefHeight="43.0" prefWidth="504.0" text="Notes:">
+      <Label alignment="TOP_LEFT" prefHeight="43.0" prefWidth="504.0" text="Notes:" textFill="WHITE">
          <font>
             <Font name="System Italic" size="22.0" />
          </font>
@@ -122,7 +122,7 @@
       </TextArea>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleBackButton" prefHeight="46.0" prefWidth="93.0" text="Back">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="46.0" prefWidth="93.0" text="Back">
                <HBox.margin>
                   <Insets left="25.0" />
                </HBox.margin>

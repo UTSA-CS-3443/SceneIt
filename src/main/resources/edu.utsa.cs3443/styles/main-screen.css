@@ -1,0 +1,54 @@
+.main-background {
+    -fx-background-color: #111827;
+}
+.list-view {
+    -fx-background-color: #111827;
+}
+#mediaListView .list-cell {
+    -fx-background-color: #111827;
+}
+#mediaListView .list-cell .label {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+}
+#mediaListView .list-cell:selected {
+    -fx-background-color: #293250;
+}
+
+#addEntryButton {
+    -fx-background-color: #4338CA;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+}
+#addEntryButton:hover {
+    -fx-background-color: #685CFF;
+}
+.toggle-button {
+    -fx-background-color: #1F2937;
+    -fx-text-fill: white;
+
+    -fx-border-width: 0 0 5px 0;
+    -fx-border-color: transparent;
+}
+.toggle-button:selected{
+    -fx-text-fill: #A5A0FF;
+    -fx-border-color: #7769F5;
+}
+#mediaListView .menu-button{
+    -fx-background-color: #1F2937;
+    -fx-background-radius: 6px;
+    -fx-padding: 4px 8px;
+}
+#mediaListView .menu-button:hover {
+    -fx-background-color: #334155;
+}
+#mediaListView .context-menu {
+    -fx-background-color: #1F2937;
+}
+#mediaListView .menu-item {
+    -fx-background-color: #1F2937;
+    -fx-background-radius: 6px;
+}
+#mediaListView .menu-item:hover {
+    -fx-background-color: #334155;
+}

@@ -13,3 +13,4 @@ id,date,type,title,releaseYear,genres,watchStatus,rating,notes
 14,2026-11-15,MOVIE,Good Boys,2019,Comedy,WANT_TO_WATCH,,"This is a test description, haha"
 15,2026-11-16,MOVIE,Hunger Games,2010,Fantasy,WATCHED,4.5,Need to rewatch with partner
 16,2026-11-16,MOVIE,DoomsDay,2026,Hero,WANT_TO_WATCH,,super excited to see this!
+17,2026-11-16,MOVIE,Oppenheimer,2017,Drama,WATCHED,5.0,"The greatest movie I've ever seen, watched it three times in theaters"

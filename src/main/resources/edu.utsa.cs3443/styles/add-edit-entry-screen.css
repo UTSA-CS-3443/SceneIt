@@ -1,0 +1,7 @@
+.entry-form {
+    -fx-background-color: #111827;
+}
+#formTitleLabel {
+    -fx-text-fill: #A5A0FF;
+    -fx-font-weight: bold;
+}

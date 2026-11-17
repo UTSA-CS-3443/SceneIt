@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.MainScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="main-background" stylesheets="@../styles/main-screen.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sceneit.controller.MainScreenController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
             <BorderPane prefHeight="48.0" prefWidth="200.0">
                <left>
-                  <Label text="SceneIt" BorderPane.alignment="CENTER">
+                  <Label text="SceneIt" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
-                        <Font name="System Bold Italic" size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <BorderPane.margin>
                         <Insets left="25.0" />

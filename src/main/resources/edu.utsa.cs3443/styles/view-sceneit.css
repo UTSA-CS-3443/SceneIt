@@ -1,0 +1,17 @@
+.view-sceneit {
+    -fx-background-color: #111827;
+}
+#titleLabel {
+    -fx-text-fill: #A5A0FF;
+    -fx-font-weight: bold;
+}
+
+#backButton {
+    -fx-background-color: #4338CA;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+    -fx-font-weight: bold;
+}
+#backButton:hover {
+    -fx-background-color: #685CFF;
+}
